@@ -1,0 +1,13 @@
+Flask==0.10.1
+Flask-Enterprise==1.0
+Jinja2==2.7.3
+MarkupSafe==0.23
+Werkzeug==0.9.6
+argparse==1.2.1
+distribute==0.6.24
+itsdangerous==0.24
+lxml==3.3.5
+pytz==2014.4
+soaplib==2.0.0-beta2
+suds==0.4
+wsgiref==0.1.2
