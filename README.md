@@ -37,8 +37,13 @@ WSDL generated on `http://localhost:5000/soap?wsdl`.
 s1011435 ⑨  coins.tsukuba.ac.jp
 
 ## Original authors
+
 [Gabriele](https://github.com/Gabriele91)  
 [Mirco](https://github.com/MircoT)
+
+## Original project
+
+[flask-soap-server](https://github.com/MircoT/flask-soap-server)
 
 ## License
 
