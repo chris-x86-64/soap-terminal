@@ -1,34 +1,33 @@
 <!doctype html>
 <html>
     <head>
-    <title>Flask Soap Server</title>  
-    </head>              
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <script type="text/javascript" src="{{url_for('static', filename='SoapApi.js')}}"></script>
-        <script type="text/javascript">            
-            $(document).ready(function() {
-				$("#submit").click(function () {
-					var soap = SoapApi();
-					var message = soap.createSoapMessage("s1011435","command",{"c" : ["string", $("#command").val()]});
-					soap.sendMessage(message, function(res){
-						$("#comresult").text(res["#text"]);
-					});
-				});
-			});
-        </script>
-        <link type="text/css" rel="stylesheet" media="screen" href="{{url_for('static', filename='normalize.css')}}"></link>     
+    <title>Flask Soap Server</title>
+    </head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='jquery.mousewheel-min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='jquery.terminal-min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='SoapApi.js')}}"></script>
+    <link type="text/css" rel="stylesheet" media="screen" href="{{url_for('static', filename='jquery.terminal.css')}}"></link>
+    <script type="text/javascript">
+        jQuery(document).ready(function($, undefined) {
+            var soap = SoapApi();
+            $('body').terminal(function(command, term) {
+                if (command !== '') {
+                    var message = soap.createSoapMessage("s1011435","command",{"c" : ["string", command]});
+                    soap.sendMessage(message, function(res) {
+                        var result = res['#text'];
+                        if (result != undefined) {
+                            term.echo(String(result));
+                        }
+                    });
+                }
+            }, {
+                greetings: 'Command Prompt',
+                name: 'whatever',
+                height: 200,
+                width: 450,
+                prompt: '$ '});
+        });
+    </script>
     <body>
-		<div style="padding: 10px;">
-			<form id="myForm">
-				<div>
-					<span>Command</span>
-					<input type="text" id="command"/></div>
-				<div></div>
-			</form>
-			<span><Button id="submit" style="margin-top: 10px;">Submit</Button></span>
-			<div style="padding-top: 10px;">
-				<div>commandResult(string) : <pre><span id="comresult"></span></pre></div>
-			</div>
-		</div>
-	</body>
-</html>
+    </body>

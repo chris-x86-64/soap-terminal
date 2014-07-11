@@ -38,12 +38,17 @@ s1011435 ⑨  coins.tsukuba.ac.jp
 
 ## Original authors
 
+### Flask Soap Server
 [Gabriele](https://github.com/Gabriele91)  
 [Mirco](https://github.com/MircoT)
 
+### jquery.terminal
+[jcubic](https://github.com/jcubic)
+
 ## Original project
 
-[flask-soap-server](https://github.com/MircoT/flask-soap-server)
+[flask-soap-server](https://github.com/MircoT/flask-soap-server)  
+[jquery.terminal](https://github.com/jcubic/jquery.terminal)
 
 ## License
 

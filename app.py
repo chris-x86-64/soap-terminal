@@ -33,7 +33,7 @@ class Service(enterprise.SOAPService):
             c : string
 
         Returns:
-            return a line of string
+            return multiple lines of string
         """
         return commands.getoutput(c)
 
