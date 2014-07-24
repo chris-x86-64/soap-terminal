@@ -18,14 +18,6 @@ Array = enterprise._scls.Array
 
 r = re.compile("(cd|chdir)\s+(.*)")
 
-class Chdir:
-      def __init__( self, newPath ):  
-        self.savedPath = os.getcwd()
-        os.chdir(newPath)
-
-      def __del__( self ):
-        os.chdir( self.savedPath )
-
 class Service(enterprise.SOAPService):
     """Soap Service Class
     
