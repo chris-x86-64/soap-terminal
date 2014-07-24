@@ -1,6 +1,7 @@
 #python lib
 import os
 import commands
+import re
 #flask lib
 from flaskext.enterprise import Enterprise
 from flask import Flask, render_template
@@ -14,6 +15,16 @@ String = enterprise._sp.String
 Integer = enterprise._sp.Integer
 Boolean = enterprise._sp.Boolean
 Array = enterprise._scls.Array
+
+r = re.compile("(cd|chdir)\s+(.*)")
+
+class Chdir:
+      def __init__( self, newPath ):  
+        self.savedPath = os.getcwd()
+        os.chdir(newPath)
+
+      def __del__( self ):
+        os.chdir( self.savedPath )
 
 class Service(enterprise.SOAPService):
     """Soap Service Class
@@ -35,6 +46,10 @@ class Service(enterprise.SOAPService):
         Returns:
             return multiple lines of string
         """
+        cd = r.match(c)
+        if cd:
+            os.chdir(cd.group(2))
+            return
         return commands.getoutput(c)
 
 @app.route('/')
