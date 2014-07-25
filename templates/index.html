@@ -10,8 +10,8 @@
     <link type="text/css" rel="stylesheet" media="screen" href="{{url_for('static', filename='jquery.terminal.css')}}"></link>
     <script type="text/javascript">
         jQuery(document).ready(function($, undefined) {
-            var soap = SoapApi();
             $('body').terminal(function(command, term) {
+                var soap = SoapApi();
                 if (command !== '') {
                     var message = soap.createSoapMessage("s1011435","command",{"c" : ["string", command]});
                     soap.sendMessage(message, function(res) {
@@ -22,10 +22,10 @@
                     });
                 }
             }, {
-                greetings: 'Command Prompt',
+                greetings: '',
                 name: 'whatever',
-                height: 200,
-                width: 450,
+                height: $(window).height() - 100,
+                width: $(window).width(),
                 prompt: '$ '});
         });
     </script>
